@@ -12,3 +12,27 @@ git push origin main　※変更をGitHubにアップロード（push）
 
 ＝＝この後のコマンド＝＝
 git pull origin main（ローカルに最新情報を保存）
+
+＝＝作業ログ用・テキスト更新した際のコマンド＝＝
+git branch　※現在地を確認。mainでない場合、mainに戻る。
+git checkout main　※（作業ブランチから）mainブランチに戻る
+git pull origin main　※GitHubの最新状態をローカルに反映
+git checkout -b add-commands-list　※コマンド一覧を追記するための新しいブランチを作成（直接作業による環境破壊防止のため、新規ブランチで実施がお作法とのこと）
+echo "　※テキストファイルを更新（他コマンド等あり）
+
+＝＝＝Issues・Pull Requestで使用したコマンド加筆＝＝＝
+# 1. 作業用ブランチ作成
+git checkout -b update-readme
+# 2. ファイル編集（または他のエディタで編集）
+echo "内容" >> README.md
+# 3. 確認
+cat README.md
+# 4. 変更を追加
+git add README.md
+# 5. 変更を記録
+git commit -m "README.mdに学習内容を追記 #1"
+# 6. GitHubにアップロード
+git push origin update-readme
+# ※この後、GitHubのWebページでPull Requestを作成
+# ※Web上でMergeボタンをクリック
+
