@@ -1,1 +1,10 @@
 これはテストファイルです
+
+＝＝＝ここまでの主なコマンド＝＝＝
+mkdir github-workspace　※作業用フォルダを作成
+cd github-workspace　※フォルダに移動
+git clone https://github.com/shigi4git-hub/github-study.git　※リポジトリをクローン（ローカルフォルダにファイル取得）
+echo "これはテストファイルです" > test.txt　※テキストファイルの生成
+git add test.txt　※作成したテキストファイルをローカルに追加(add)。
+git commit -m "テストファイルを追加"　※テキスト追加をMDファイルに追記(commit)。
+git push origin main　※変更をGitHubにアップロード（push）
