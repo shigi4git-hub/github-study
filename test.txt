@@ -8,3 +8,7 @@ echo "これはテストファイルです" > test.txt　※テキストファ�
 git add test.txt　※作成したテキストファイルをローカルに追加(add)。
 git commit -m "テストファイルを追加"　※テキスト追加をMDファイルに追記(commit)。
 git push origin main　※変更をGitHubにアップロード（push）
+（Git-Hubで、テキスト編集）
+
+＝＝この後のコマンド＝＝
+git pull origin main（ローカルに最新情報を保存）
