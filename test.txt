@@ -36,3 +36,68 @@ git push origin update-readme
 # ※この後、GitHubのWebページでPull Requestを作成
 # ※Web上でMergeボタンをクリック
 
+
+不要ブランチ削除
+git branch　※現状のブランチ一覧の表示と現在地
+git checkout main　※作業ブランチから、メインブランチに移動
+git pull origin main　※最新状態の確認と取得
+（git branch -d update-readme）
+git branch -d add-commands-list　※不要ブランチの削除
+git branch　※確認・現状のブランチ一覧の表示と現在地
+＝＝＝＝
+# 不要ブランチ削除の手順
+git branch                      # 現在のブランチ一覧と現在地を表示
+git checkout main               # mainブランチに移動
+git pull origin main            # GitHubの最新状態を取得・反映
+git branch -d ブランチ名        # 不要なブランチを削除
+git branch                      # 削除されたか確認
+□Git Flow
+# ===== 1. 現在地確認 =====
+git branch
+# 結果：* main
+# ===== 2. developブランチ作成・移動 =====
+git checkout -b develop
+# 結果：Switched to a new branch 'develop'
+# プロンプト：(main) → (develop)
+# ===== 3. developをGitHubにpush =====
+git push origin develop
+# 結果：GitHub上にdevelopブランチ作成
+# ===== 4. 現在地確認（念のため） =====
+git branch
+# 結果：
+#   * develop
+#     main
+# ===== 5. featureブランチ作成・移動 =====
+git checkout -b feature/add-gitflow-notes
+# 結果：Switched to a new branch 'feature/add-gitflow-notes'
+# プロンプト：(develop) → (feature/add-gitflow-notes)
+# ===== 6. test.txtに追記（これから実行） =====
+＝＝＝Git Flowのブランチ構造＝＝＝
+main（本丸・本番環境）
+  └─ develop（開発拠点・開発環境）
+       └─ feature/機能名（作業場・新機能開発）
+【ブランチの役割】
+main：本番公開中のバージョン（絶対に守る）
+develop：開発中の最新版（次のリリース準備）
+feature：個別の機能開発（作業用）
+【作業の流れ】
+1. feature で作業
+2. develop にマージ
+3. develop から main にマージ（本番公開）
+# 7. 変更を確認
+cat test.txt
+# 8. 変更をステージング
+git add test.txt
+# 9. コミット
+git commit -m "Git Flowのメモを追加"
+# 10. GitHubにpush
+git push origin feature/add-gitflow-notes
+# 11. GitHubでPull Request作成（Web操作）
+#     feature/add-gitflow-notes → develop
+# 12. マージ後、developに戻る
+git checkout develop
+# 13. 最新を取得
+git pull origin develop
+# 14. featureブランチ削除
+git branch -d feature/add-gitflow-notes
+
